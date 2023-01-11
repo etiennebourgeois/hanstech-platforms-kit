@@ -19,14 +19,14 @@ export default async function middleware(req: NextRequest) {
   const url = req.nextUrl;
 
   // Get hostname of request (e.g. demo.hanstechnologies.ca, demo.localhost:3000)
-  const hostname = req.headers.get("host") || "demo.hanstech-platforms-kit.vercel.app";
+  const hostname = req.headers.get("host") || "riottech.xyz/";
 
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
   const path = url.pathname;
 
   // Only for demo purposes - remove this if you want to use your root domain as the landing page
   if (hostname === "hanstech-platforms-kit.vercel.app" || hostname === "platforms.vercel.app") {
-    return NextResponse.redirect("https://demo.hanstech-platforms-kit.vercel.app");
+    return NextResponse.redirect("http://riottech.xyz/");
   }
 
   /*  You have to replace ".hanstechnologies.ca" with your own domain if you deploy this example under your domain.
@@ -36,7 +36,7 @@ export default async function middleware(req: NextRequest) {
   const currentHost =
     process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
       ? hostname
-          .replace(`.hanstech-platforms-kit.vercel.app`, "")
+          .replace(`.riottech.xyz/`, "")
           .replace(`.platformize.vercel.app`, "")
       : hostname.replace(`.localhost:3000`, "");
 
